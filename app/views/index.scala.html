@@ -1,0 +1,14 @@
+@(clients: List[Client])
+
+@main(""){
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="pull-right">
+        Monitoring @clients.length clients
+      </div>
+    </div>
+    <div class="span12">
+      <a href="/clients/new" class="btn btn-primary btn-large">Add Client</a>
+    </div>
+  </div>
+}

@@ -1,0 +1,19 @@
+@(clientForm: Form[ClientGroup])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main(""){
+  @helper.form(action = controllers.routes.ClientGroupController.newClientGroup) {
+    <legend>New Client</legend>
+    @inputText(
+                clientForm("name"),
+                '_label -> "Name"
+            )
+
+    <div class="actions">
+      <input type="submit" class="btn primary" value="Sign Up">
+      <a href="@routes.Application.index" class="btn">Cancel</a>
+    </div>
+  }
+}
