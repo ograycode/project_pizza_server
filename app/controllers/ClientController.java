@@ -5,6 +5,8 @@ import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
 
+import org.codehaus.jackson.JsonNode;
+
 import views.html.client.*;
 import views.html.*;
 
@@ -30,6 +32,31 @@ public class ClientController extends Controller {
     Client client = filledForm.get();
     client.save();
     return redirect(routes.Application.index());
+  }
+
+  /* Handles the client check-in functionality */
+  @BodyParser.Of(BodyParser.Json.class)
+  public static Result checkIn() {
+    Result result = ok();
+    JsonNode json = request().body().asJson();
+    String status = json.findPath("status").getTextValue();
+    String uuid = json.findPath("uuid").getTextValue();
+    if (status == null || uuid == null) {
+      result = badRequest("Missing status or uuid");
+    } else {
+      Boolean b_status = false;
+      if (status.equalsIgnoreCase("ok")) {
+        b_status = true;
+      }
+      Client client = Client.find.where().eq("uuid", uuid).findUnique();
+      if (client == null) {
+        result = badRequest("No matching uuid");
+      } else {
+        client.statusOk = b_status;
+        client.save(); 
+      }
+    }
+    return result;
   }
 
 

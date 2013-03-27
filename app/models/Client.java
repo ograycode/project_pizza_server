@@ -21,6 +21,8 @@ public class Client extends Model {
 
   public int port;
   public String ip;
+  public String uuid;
+  public Boolean statusOk;
 
   @ManyToOne
   public ClientGroup group;

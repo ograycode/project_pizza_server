@@ -19,6 +19,8 @@ create table client (
   date_added                timestamp,
   port                      integer,
   ip                        varchar(255),
+  uuid                      varchar(255),
+  status_ok                 boolean,
   group_id                  bigint,
   last_checked_in           timestamp,
   constraint pk_client primary key (id))
