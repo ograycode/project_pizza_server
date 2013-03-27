@@ -34,6 +34,14 @@ public class ClientController extends Controller {
     return redirect(routes.Application.index());
   }
 
+  public static Result show(long id) {
+    Client client = Client.find.byId(id);
+    if (client == null) {
+      return badRequest("No client found with id " + id);
+    } 
+    return ok(showClient.render(client));
+  }
+
   /* Handles the client check-in functionality */
   @BodyParser.Of(BodyParser.Json.class)
   public static Result checkIn() {

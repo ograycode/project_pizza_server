@@ -12,6 +12,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /clients/new                controllers.ClientController.newClientForm()
 POST    /clients/new                controllers.ClientController.newClient()
 POST    /clients/checkin            controllers.ClientController.checkIn()
+GET     /clients/:id                controllers.ClientController.show(id: Long)
 
 # ClientGroup controller
 GET     /groups/new                 controllers.ClientGroupController.newClientGroupForm()
