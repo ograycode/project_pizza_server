@@ -6,6 +6,7 @@ import play.data.*;
 import static play.data.Form.*;
 
 import views.html.*;
+import views.html.clientgroup.*;
 
 import models.*;
 
