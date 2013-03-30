@@ -22,7 +22,7 @@ public class Client extends Model {
   public int port;
   public String ip;
   public String uuid;
-  public Boolean statusOk;
+  public Boolean statusOk = false;
 
   @ManyToOne
   public ClientGroup group;
