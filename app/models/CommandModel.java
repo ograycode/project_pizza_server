@@ -27,14 +27,14 @@ public class CommandModel extends Model {
   err         string
   */
 
-  public String version;
-  public String description;
-  public String cmd_type;
+  public String version = "";
+  public String description = "";
+  public String cmd_type = "";
   @Column(name="Command_Order")
   public int order;
-  public String exec;
-  public Boolean pass;
-  public String err;
+  public String exec = "";
+  public Boolean pass = false;
+  public String err = "";
 
   @OneToMany(cascade = CascadeType.ALL)
   public List<ValidateCommand> validates;
