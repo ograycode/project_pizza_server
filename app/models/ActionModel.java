@@ -30,7 +30,7 @@ public class ActionModel extends Model {
   @Formats.DateTime(pattern="dd/MM/yyyy hh:mm:ss")
   public Date execution = new Date();
 
-  public static Finder<Long,ClientGroup> find = new Finder<Long, ClientGroup>(
-    Long.class, ClientGroup.class
+  public static Finder<Long,ActionModel> find = new Finder<Long, ActionModel>(
+    Long.class, ActionModel.class
   ); 
 }
