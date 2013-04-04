@@ -1,0 +1,20 @@
+@(clientForm: Form[Client])
+
+@import helper._
+@import helper.twitterBootstrap._
+@import play.api.mvc.Call
+
+@main(""){
+  @helper.form(action = controllers.routes.ClientController.edit) {
+    <legend>Edit Client</legend>
+    @inputText(clientForm("id"), '_class -> "hidden")
+    @inputText(clientForm("displayName"), '_label -> "Name")
+    @inputText(clientForm("ip"), '_label -> "IP")
+    @inputText(clientForm("port"), '_label -> "Port")
+
+    <div class="actions">
+      <input type="submit" class="btn primary" value="Sign Up">
+      <a href="@routes.Application.index" class="btn">Cancel</a>
+    </div>
+  }
+}

@@ -10,7 +10,6 @@ import play.data.validation.*;
 @Entity
 public class Client extends Model {
   @Id
-  @Constraints.Min(20)
   public Long id;
 
   @Constraints.Required

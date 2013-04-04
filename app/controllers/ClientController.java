@@ -19,7 +19,7 @@ public class ClientController extends Controller {
   /**
   * Defines a form wrapping the Client class.
   */ 
-  final static Form<Client> form = form(Client.class);
+  private static Form<Client> form = form(Client.class);
 
   /* Retrieves all clients */
   public static Result all() {
@@ -40,6 +40,20 @@ public class ClientController extends Controller {
     Client client = filledForm.get();
     client.save();
     return redirect(routes.Application.index());
+  }
+
+  /* Creates a new form for the given client id */
+  public static Result editForm(Long id) {
+    Client client = Client.find.byId(id);
+    form = form.fill(client);
+    return ok(editClientForm.render(form));
+  }
+
+  /* Edits client from POST request */
+  public static Result edit() {
+    Client client = form.bindFromRequest().get();
+    client.update();
+    return redirect(routes.ClientController.show(client.id));
   }
 
   public static Result show(long id) {

@@ -13,7 +13,9 @@ GET     /clients                    controllers.ClientController.all()
 GET     /clients/new                controllers.ClientController.newClientForm()
 POST    /clients/new                controllers.ClientController.newClient()
 POST    /clients/checkin            controllers.ClientController.checkIn()
+POST    /clients/edit               controllers.ClientController.edit()
 GET     /clients/:id                controllers.ClientController.show(id: Long)
+GET     /clients/:id/edit           controllers.ClientController.editForm(id: Long)
 
 # ClientGroup controller
 GET     /groups/new                 controllers.ClientGroupController.newClientGroupForm()
