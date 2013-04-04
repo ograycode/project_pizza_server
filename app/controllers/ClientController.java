@@ -12,12 +12,20 @@ import views.html.*;
 
 import models.*;
 
+import java.util.List;
+
 public class ClientController extends Controller {
 
   /**
   * Defines a form wrapping the Client class.
   */ 
   final static Form<Client> form = form(Client.class);
+
+  /* Retrieves all clients */
+  public static Result all() {
+    List<Client> clients = Client.find.all();
+    return ok(listClients.render(clients));
+  }
   
   /* Retrieves the form for creating new clients */
   public static Result newClientForm() {

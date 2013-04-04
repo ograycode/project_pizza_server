@@ -1,0 +1,11 @@
+@(clients: List[Client])
+
+@main("") {
+  <h1>Clients</h1>
+  <h3>Total: @clients.length</h3>
+  <ul>
+    @for(client <- clients) {
+      <li><a href="/clients/@client.id">@client.displayName</a></li>
+    }
+  </ul>
+}

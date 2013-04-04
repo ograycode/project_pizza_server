@@ -9,6 +9,7 @@ GET     /                           controllers.Application.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Client controller
+GET     /clients                    controllers.ClientController.all()
 GET     /clients/new                controllers.ClientController.newClientForm()
 POST    /clients/new                controllers.ClientController.newClient()
 POST    /clients/checkin            controllers.ClientController.checkIn()
