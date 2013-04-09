@@ -36,4 +36,18 @@ public class CommandController extends Controller {
     return badRequest("Unable to find command with id " + id);
   }
 
+  /* Renders the form for a new command */
+  public static Result newForm() {
+    return ok(newForm.render(form));
+  }
+
+  /* Accepts new command from form */
+  public static Result newCommand() {
+    Form<CommandModel> filledForm = form.bindFromRequest();
+    Logger.info("Request: " + filledForm.toString());
+    CommandModel command = filledForm.get();
+    command.save();
+    return redirect(routes.Application.index());
+  }
+
 }
