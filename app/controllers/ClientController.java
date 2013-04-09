@@ -56,6 +56,16 @@ public class ClientController extends Controller {
     return redirect(routes.ClientController.show(client.id));
   }
 
+  /* Deletes a client by it's id */
+  public static Result delete(Long id) {
+    Client client = Client.find.byId(id);
+    if (client != null) {
+      client.delete();
+      return ok(routes.ClientController.all());
+    }
+    return badRequest("Unable to find client with id of " + id);
+  }
+
   public static Result show(long id) {
     Client client = Client.find.byId(id);
     if (client == null) {
