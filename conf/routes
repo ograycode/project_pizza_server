@@ -16,7 +16,7 @@ POST    /clients/checkin            controllers.ClientController.checkIn()
 POST    /clients/edit               controllers.ClientController.edit()
 GET     /clients/:id                controllers.ClientController.show(id: Long)
 GET     /clients/:id/edit           controllers.ClientController.editForm(id: Long)
-POST    /clients/:id/delete         controllers.ClientCOntroller.delete(id: Long)
+POST    /clients/:id/delete         controllers.ClientController.delete(id: Long)
 
 # ClientGroup controller
 GET     /groups/new                 controllers.ClientGroupController.newClientGroupForm()
