@@ -3,6 +3,7 @@
 @main("") {
   <h1>Clients</h1>
   <h3>Total: @clients.length</h3>
+  <a href="/clients/new" class="btn btn-success btn-large">New Client</a>
   <ul>
     @for(client <- clients) {
       <li><a href="/clients/@client.id">@client.displayName</a></li>
