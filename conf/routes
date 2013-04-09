@@ -26,4 +26,6 @@ POST    /groups/new                 controllers.ClientGroupController.newClientG
 GET     /commands                   controllers.CommandController.all()
 GET     /commands/new               controllers.CommandController.newForm()
 POST    /commands/new               controllers.CommandController.newCommand()
+POST    /commands/edit              controllers.CommandController.edit()
+GET     /commands/:id/edit          controllers.CommandController.editForm(id: Long)
 POST    /commands/:id/delete        controllers.CommandController.delete(id: Long)

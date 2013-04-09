@@ -1,0 +1,30 @@
+@(commandForm: Form[CommandModel])
+
+@import helper._
+@import helper.twitterBootstrap._
+@import play.api.mvc.Call
+
+@main("") {
+  @helper.form(action = controllers.routes.CommandController.edit) {
+
+    <legend>Edit Command</legend>
+    @inputText(commandForm("version"))
+    @inputText(commandForm("description"))
+    @inputText(
+      commandForm("cmd_type"),
+      '_label -> "Command Type"
+    )
+    @inputText(
+      commandForm("exec"),
+      '_label -> "Execute Command"
+    )
+    @inputText(
+      commandForm("order")
+    )
+
+    <div class="actions">
+      <input type="submit" class="btn btn-large btn-primary" value="Edit Command">
+      <a href="@routes.Application.index" class="btn btn-large btn-danger">Cancel</a>
+    </div>
+  }
+}

@@ -50,4 +50,18 @@ public class CommandController extends Controller {
     return redirect(routes.Application.index());
   }
 
+  /* Edits command based upon the form */
+  public static Result edit() {
+    CommandModel command = form.bindFromRequest().get();
+    command.update();
+    return redirect(routes.CommandController.all()); 
+  }
+
+  /* Renders edit command form */
+  public static Result editForm(Long id) {
+    CommandModel command = CommandModel.find.byId(id);
+    form = form.fill(command);
+    return ok(edit.render(form));
+  }
+
 }
