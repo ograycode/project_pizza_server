@@ -1,0 +1,12 @@
+@(commands: List[CommandModel])
+
+@main("") {
+  <h1>Commands</h1>
+  <h3>Total: @commands.length</h3>
+  <a href="/commands/new" class="btn btn-success btn-large">New Command</a>
+  <ul>
+    @for(command <- commands) {
+      <li><a href="/commands/@command.id">@command.description</a></li>
+    }
+  </ul>
+}

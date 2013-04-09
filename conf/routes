@@ -21,3 +21,6 @@ POST    /clients/:id/delete         controllers.ClientController.delete(id: Long
 # ClientGroup controller
 GET     /groups/new                 controllers.ClientGroupController.newClientGroupForm()
 POST    /groups/new                 controllers.ClientGroupController.newClientGroup()
+
+# Command controller
+GET     /commands                   controllers.CommandController.all()

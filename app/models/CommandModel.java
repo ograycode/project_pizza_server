@@ -42,4 +42,8 @@ public class CommandModel extends Model {
   @OneToOne
   public File file;
 
+  public static Finder<Long, CommandModel> find = new Finder<Long, CommandModel>(
+    Long.class, CommandModel.class
+  ); 
+
 }
