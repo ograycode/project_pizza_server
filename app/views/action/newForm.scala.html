@@ -1,0 +1,18 @@
+@(actionForm: Form[ActionModel])
+
+@import helper._
+@import helper.twitterBootstrap._
+@import play.api.mvc.Call
+
+@main(""){
+  @helper.form(action = controllers.routes.ActionController.newAction) {
+    <legend>New Action</legend>
+    @inputText(actionForm("name"), '_label -> "Name")
+    @inputText(actionForm("execution"), '_label -> "Execution Date")
+
+    <div class="actions">
+      <input type="submit" class="btn btn-large btn-primary" value="New Action">
+      <a href="@routes.Application.index" class="btn btn-large btn-danger">Cancel</a>
+    </div>
+  }
+}

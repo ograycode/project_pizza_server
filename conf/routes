@@ -32,3 +32,5 @@ POST    /commands/:id/delete        controllers.CommandController.delete(id: Lon
 
 # Action controller
 GET     /actions                    controllers.ActionController.all()
+GET     /actions/new                controllers.ActionController.newForm()
+POST    /actions/new                controllers.ActionController.newAction()
