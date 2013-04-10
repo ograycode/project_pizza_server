@@ -47,4 +47,13 @@ public class ActionController extends Controller {
 
     return badRequest("Unable to save new action");
   }
+
+  /* Shows an action based upon id */
+  public static Result show(Long id) {
+    ActionModel action = ActionModel.find.byId(id);
+    if (action == null) {
+      return badRequest("Unable to find action with id of " + id);
+    }
+    return ok(show.render(action));
+  }
 }

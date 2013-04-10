@@ -1,0 +1,20 @@
+@(action: ActionModel)
+
+@main(""){
+  <h1>Action @action.name</h1>
+  <div>Id: @action.id</div>
+  <div>Groups:</div>
+  <ul>
+    @for(group <- action.groups){
+      <li>Group @group.id</li>
+    }
+  </ul>
+  <div>Name: @action.name</div>
+  <div>Config: @action.config</div>
+  <div>Executed: @action.executed</div>
+  <div>Uploaded Date: @action.uploaded</div>
+  <div>Execution Date: @action.execution</div>
+  <div>
+    <a href="/actions/@action.id/edit" class="btn">Edit</a>
+  </div>
+}
