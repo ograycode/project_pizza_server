@@ -1,0 +1,12 @@
+@(actions: List[ActionModel])
+
+@main(""){
+  <h1>Actions</h1>
+  <h3>Total: @actions.length</h3>
+  <a href="/actions/new" class="btn btn-success btn-large">New Action</a>
+  <ul>
+    @for(action <- actions) {
+      <li><a href="/actions/@action.id">@action.name</a></li>
+    }
+  </ul>
+}
