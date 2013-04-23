@@ -15,6 +15,19 @@
   <div>Uploaded Date: @action.uploaded</div>
   <div>Execution Date: @action.execution</div>
   <div>
-    <a href="/actions/@action.id/edit" class="btn">Edit</a>
+    Commands:
+    @if(action.commands.length > 0) {
+      <ul>
+      @for(command <- action.commands) {
+        <li><a href="/commands/@command.id/edit">@command.description</a></li>
+      }
+      </ul>
+    } else {
+      none.
+    }
+  </div>
+  <div>
+    <a href="/actions/@action.id/edit" class="btn">Edit Action</a>
+    <a href="/commands/new" class="btn btn-primary">New Command</a>
   </div>
 }
