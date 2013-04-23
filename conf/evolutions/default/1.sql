@@ -34,7 +34,6 @@ create table client_group (
 
 create table command_model (
   id                        bigint not null,
-  message_id                bigint not null,
   version                   varchar(255),
   description               varchar(255),
   cmd_type                  varchar(255),
@@ -43,6 +42,7 @@ create table command_model (
   pass                      boolean,
   err                       varchar(255),
   file_id                   bigint,
+  action_id                 bigint,
   constraint pk_command_model primary key (id))
 ;
 
@@ -101,10 +101,10 @@ create sequence validate_command_seq;
 
 alter table client add constraint fk_client_group_1 foreign key (group_id) references client_group (id) on delete restrict on update restrict;
 create index ix_client_group_1 on client (group_id);
-alter table command_model add constraint fk_command_model_message_2 foreign key (message_id) references message (id) on delete restrict on update restrict;
-create index ix_command_model_message_2 on command_model (message_id);
-alter table command_model add constraint fk_command_model_file_3 foreign key (file_id) references file (id) on delete restrict on update restrict;
-create index ix_command_model_file_3 on command_model (file_id);
+alter table command_model add constraint fk_command_model_file_2 foreign key (file_id) references file (id) on delete restrict on update restrict;
+create index ix_command_model_file_2 on command_model (file_id);
+alter table command_model add constraint fk_command_model_action_3 foreign key (action_id) references action_model (id) on delete restrict on update restrict;
+create index ix_command_model_action_3 on command_model (action_id);
 alter table validate_command add constraint fk_validate_command_command_mo_4 foreign key (command_model_id) references command_model (id) on delete restrict on update restrict;
 create index ix_validate_command_command_mo_4 on validate_command (command_model_id);
 

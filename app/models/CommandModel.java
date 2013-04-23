@@ -42,6 +42,10 @@ public class CommandModel extends Model {
   @OneToOne
   public File file;
 
+  @ManyToOne
+  @JoinColumn(name="action_id")
+  public ActionModel action;
+
   public static Finder<Long, CommandModel> find = new Finder<Long, CommandModel>(
     Long.class, CommandModel.class
   ); 

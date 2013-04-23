@@ -1,4 +1,4 @@
-@(commandForm: Form[CommandModel])
+@(commandForm: Form[CommandModel], actionList: List[ActionModel])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -22,9 +22,23 @@
       commandForm("order")
     )
 
+    @inputRadioGroup(
+      commandForm("action"),
+      options = actionSeq,
+      '_label -> "Actions"
+    )
+
     <div class="actions">
       <input type="submit" class="btn btn-large btn-primary" value="New Command">
       <a href="@routes.Application.index" class="btn btn-large btn-danger">Cancel</a>
     </div>
   }
+}
+
+@actionSeq = @{
+  var actions: Seq[(String, String)] = Seq()
+  for(action <- actionList) {
+    actions = actions :+ (action.id + "" -> action.name)
+  }
+  actions
 }

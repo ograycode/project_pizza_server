@@ -30,6 +30,9 @@ public class ActionModel extends Model {
   @Formats.DateTime(pattern="dd/MM/yyyy hh:mm:ss")
   public Date execution = new Date();
 
+  @OneToMany(cascade = CascadeType.ALL, mappedBy="action")
+  public List<CommandModel> commands;
+
   public static Finder<Long,ActionModel> find = new Finder<Long, ActionModel>(
     Long.class, ActionModel.class
   ); 

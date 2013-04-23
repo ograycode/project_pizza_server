@@ -38,15 +38,26 @@ public class CommandController extends Controller {
 
   /* Renders the form for a new command */
   public static Result newForm() {
-    return ok(newForm.render(form));
+    List<ActionModel> models = ActionModel.find.all();
+    return ok(newForm.render(form, models));
   }
 
   /* Accepts new command from form */
   public static Result newCommand() {
     Form<CommandModel> filledForm = form.bindFromRequest();
     Logger.info("Request: " + filledForm.toString());
-    CommandModel command = filledForm.get();
-    command.save();
+    CommandModel command = new CommandModel();
+    command.cmd_type = filledForm.field("cmd_type").value();
+    command.exec = filledForm.field("exec").value();
+    command.order = new Integer(filledForm.field("order").value());
+    command.version = filledForm.field("version").value();
+    command.description = filledForm.field("description").value();
+
+    ActionModel action = ActionModel.find.byId(1l);
+
+    action.commands.add(command);
+
+    action.save();
     return redirect(routes.Application.index());
   }
 

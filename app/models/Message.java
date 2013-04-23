@@ -17,6 +17,6 @@ public class Message extends Model {
 
   public String version;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  public List<CommandModel> commands;
+ // @OneToMany(cascade = CascadeType.ALL)
+ // public List<CommandModel> commands;
 }
